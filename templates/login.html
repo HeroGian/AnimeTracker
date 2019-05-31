@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login - AnimeTracker</title>
+        <link href="/static/main.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="header">
+            <a href="/" class="link_home"></a>
+        </div>
+        <div class="main">
+            <div class="login_form">
+                <p>Accedi con:</p>
+                <a href="/login_plus" class="plus_button"></a>
+                <br><br>
+                <a href="/login_mal" class="mal_button"></a>
+                <br><br>
+                <hr>
+                <p>Oppure:</p>
+                <form method="post">
+                    <b>Username:</b><br>
+                    <input class="field" type="text" name="username"
+                           placeholder="Username" value="{{username}}"><br>
+                    {% if username_err %}
+                        <span class="error_message">* {{username_err}}</span><br>
+                    {% endif %}
+
+                    <b>Password:</b><br>
+                    <input class="field" type="password" name="password"
+                           placeholder="Password" autocomplete="new-password"><br>
+                    {% if password_err %}
+                        <span class="error_message">* {{password_err}}</span><br>
+                    {% endif %}
+                    <br><br>
+                    <input class="confirm_log_in" type="submit" value="Submit">
+                </form>
+                <p class="login_response"></p>
+            </div>
+        </div>
+    </body>
+</html>

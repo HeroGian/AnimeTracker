@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search - AnimeTracker</title>
+    <link href="/static/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="header">
+        <a href="/" class="link_home"></a>
+        {% if not user %}
+            <a href="/login">
+                 <button class="login">Login</button>
+            </a>
+            <a href="/signup">
+                 <button class="sign_up">Sign Up</button>
+            </a>
+        {% else %}
+            <a href="/logout">
+                 <button class="logout">Logout</button>
+            </a>
+            <a href="/profile?id={{user}}" class="display_avatar">
+                <img class="avatar_img" src="{{avatar}}" width="42"/>
+                <span class="avatar_txt" ><b>{{user}}</b></span>
+            </a>
+        {% endif %}
+    </div>
+    <div class="main">
+        <div class="ricerca_anime">
+            <h4>Risultati della ricerca per "{{query}}"</h4>
+            {% if type == 1 %}
+                <ol>
+                    {% for a in lista_anime %}
+                        <li>
+                            <a href="/anime?id={{a.titolo|replace(' ', '+')}}">
+                                <img src="{{a.copertina}}" width="42" height="52" />
+                            </a>
+                            <a href="/anime?id={{a.titolo|replace(' ', '+')}}">
+                                <span>{{a.titolo}}</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ol>
+            {% elif type == 2 %}
+                <ol>
+                    {% for a in lista_utenti %}
+                        <li>
+                            <a href="/profile?id={{a.username}}">
+                                <img src="{{a.avatar}}" width="42" />
+                            </a>
+                            <a href="/profile?id={{a.username}}">
+                                <span>{{a.username}}</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ol>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

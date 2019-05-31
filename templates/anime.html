@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anime Info - AnimeTracker</title>
+    <link href="/static/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="header">
+        <a href="/" class="link_home"></a>
+        {% if not user %}
+            <a href="/login">
+                 <button class="login">Login</button>
+            </a>
+            <a href="/signup">
+                 <button class="sign_up">Sign Up</button>
+            </a>
+        {% else %}
+            <a href="/logout">
+                 <button class="logout">Logout</button>
+            </a>
+            <a href="/profile?id={{user}}" class="display_avatar">
+                <img class="avatar_img" src="{{avatar}}" width="42"/>
+                <span class="avatar_txt" ><b>{{user}}</b></span>
+            </a>
+        {% endif %}
+    </div>
+
+    <div class="main">
+
+        <div class="anime_titolo">
+            <h2>{{titolo}}</h2>
+        </div>
+
+
+        <div class="anime_info">
+            <img class="cover_anime" src="{{copertina}}" />
+            {% if user %}
+                <form method="post">
+                    {% if not mi_piace %}
+                        <input class="btn_link" type="submit" name="anime_fav" value="Aggiungi ai preferiti"><br>
+                    {% else %}
+                        <input class="btn_link" type="submit" name="del_anime_fav" value="Rimuovi dai preferiti"><br>
+                    {% endif %}
+
+                    {% if not seguito %}
+                        <input class="btn_link" type="submit" name="anime_add" value="Aggiungi alla lista in corso">
+                    {% else %}
+                        <input class="btn_link" type="submit" name="del_anime_add" value="Rimuovi dalla lista in corso">
+                    {% endif %}
+                </form>
+                <hr>
+            {% endif %}
+
+            <h4>Informazioni</h4>
+            {% if not edit_info %}
+            <ul>
+                <li><b>Punteggio:</b> {{punteggio}}</li>
+                <li><b>Episodi:</b> {{ani.num_ep}}</li>
+                <li><b>Stato:</b> {{ani.status}}</li>
+                <li><b>Data Inizio:</b> {{ani.start_date}}</li>
+                <li><b>Data Fine:</b> {{ani.end_date}}</li>
+            </ul>
+            {% if user %}
+            <form method="post">
+              <input class="edit" type="submit" value="edit" name="edit_info">
+            </form>
+            {% endif %}
+            {% endif %}
+
+            {% if user %}
+                {% if edit_info %}
+                    <div class="edit_info">
+                      <form method="post">
+                          <b>Episodi:</b> <input name="episodi" class="field_edit" type="number" value="{{ani.num_ep}}"><br>
+                          <b>Stato:</b><br>
+                            <select name="status">
+                                <option value="Finished Airing">Finished Airing</option>
+                                <option value="Currently Airing">Currently Airing</option>
+                                <option value="Not yet aired">Not yet aired</option>
+                            </select><br><br>
+                          <b>Data Inizio:</b> <input name="start_date" class="field_edit" type="date" value="{{ani.start_date}}"><br>
+                          <b>Data Fine:</b><br> <input name="end_date" class="field_edit" type="date" value="{{ani.end_date}}"><br><br>
+                          <input class="confirm_sign_up" type="submit" name="confirm_edit_info" value="Conferma">
+                          <input class="confirm_log_in" type="submit"  name="close_edit_descr" value="Chiudi">
+                      </form>
+                  </div>
+                {% endif %}
+            {% endif %}
+            <hr>
+                <a class="gplus_share"
+                   href="https://plus.google.com/share?url={{share_url}}"
+                   onclick="javascript:window.open(
+                            encodeURI(this.href),
+                            '_blank', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600'
+                   );return false;">
+                    <img src="static/google_plus_share_new.png" alt="Share on Google+"/>
+                </a><br>
+        </div>
+
+
+        <div class="anime_box_right">
+	  <div class="anime_descr">
+	      <h4>Descrizione</h4>
+	      <hr>
+          {% if not edit_descr %}
+	        <p>{{ani.descr|safe}}</p>
+              {% if user %}
+                  <form method="post">
+                      <input class="edit" type="submit" value="edit" name="edit_descr">
+                  </form>
+              {% endif %}
+          {% endif %}
+          {% if edit_descr %}
+              <div class="edit_descr">
+                  <form method="post">
+                      <textarea name="descr" rows="10" cols="82">{{ani.descr|safe}}</textarea>
+                      <input class="confirm_sign_up" type="submit" name="confirm_edit_descr" value="Conferma">
+                      <input class="confirm_log_in" type="submit" name="close_edit_descr" value="Chiudi">
+                  </form>
+              </div>
+          {% endif %}
+	  </div>
+
+
+	  <div class="punteggio_anime">
+	  </div>
+	  <div class="recensioni">
+	      <h4>Recensioni</h4>
+	      <hr>
+	      {% for r in rece %}
+		<div class="rece_box_left">
+		  <a href="/profile?id={{r.autore}}">
+		  
+		    <img src="{{avatar_recens[loop.index0]}}" width="42" /><br>
+		    <span>{{r.autore}}</span>
+		  </a>
+		  <div class="rece_box_right">
+		    <span><b>Voto:</b> {{r.voto}}</span>
+		  </div>
+		  <div class="rece_text">
+		    <span>{{r.recens}}</span><br><br>
+		  </div>
+		</div>
+          <hr>
+	      {% endfor %}
+	  </div>
+	  {% if user %}
+	      <div class="form_rec">
+		  <h4>Scrivi una Recensione</h4>
+		  <form method="post">
+		      <textarea name="rece" rows="10" cols="40" placeholder="Condividi la tua opinione"></textarea><br>
+		      <span>Voto: </span>
+		      <select name="voto">
+			  <option value="1">1</option>
+			  <option value="2">2</option>
+			  <option value="3">3</option>
+			  <option value="4">4</option>
+			  <option value="5">5</option>
+			  <option value="6">6</option>
+			  <option value="7">7</option>
+			  <option value="8">8</option>
+			  <option value="9">9</option>
+			  <option value="10">10</option>
+		      </select>
+		      <input class="confirm_sign_up" type="submit" value="Submit" name="submit_rece">
+		  </form>
+	      </div>
+	  {% endif %}
+	</div>
+    </div>
+</body>
+</html>

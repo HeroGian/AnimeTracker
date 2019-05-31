@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AnimeTracker</title>
+    <link href="/static/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="header">
+        <a href="/" class="link_home"></a>
+        {% if not user %}
+            <a href="/login">
+                 <button class="login">Login</button>
+            </a>
+            <a href="/signup">
+                 <button class="sign_up">Sign Up</button>
+            </a>
+        {% else %}
+            <a href="/logout">
+                 <button class="logout">Logout</button>
+            </a>
+            <a href="/profile?id={{user}}" class="display_avatar">
+                <img class="avatar_img" src="{{avatar}}" width="42"/>
+                <span class="avatar_txt"><b>{{user}}</b></span>
+            </a>
+        {% endif %}
+    </div>
+    <div class="main">
+        <div class="search">
+            <form method="post">
+                <select class="cosa_cerchi" name="cosa_cerchi">
+                    <option value="anime">Anime</option>
+                    <option value="utenti">Utenti</option>
+                </select>
+                <input class="text_search" type="text" name="search" placeholder="Cerca Anime o Utenti..">
+                <input class="submit_search" type="submit" value="Cerca">
+            </form>
+        </div>
+        <div class="nuovi_anime">
+            <div class="wrap">
+              <h4>Anime attualmente in corso:</h4>
+                    <hr>
+              <div class="frame">
+                <ul class="clearfix">
+                    {% for i in current_anime %}
+                  <li><a href="/anime?id={{i.titolo}}"><img src="{{i.cover}}" width="160" height="220" /></a></li>
+                    {% endfor %}
+                </ul>
+              </div>
+            </div>
+        </div>
+
+        <div class="top_anime">
+            <div class="wrap">
+              <h4>Anime top ten:</h4>
+                <hr>
+              <div class="frame">
+                <ul class="clearfix">
+                    {% for i in top_5_anime %}
+                  <li><a href="/anime?id={{i.titolo}}"><img src="{{i.cover}}" width="160" height="220"/></a></li>
+                    {% endfor %}
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="ultime_recensioni">
+            <h4>Ultime recensioni inserite:</h4>
+            <hr>
+            {% for i in last_n_rec %}
+                <div class="recensione">
+                    <a href="/anime?id={{last_n_anime[loop.index0].key}}">
+                        <img src="{{last_n_anime[loop.index0].cover}}" width="42" height="42" />
+                    </a>
+                    <span><b>Voto: {{i.voto}}</b></span>
+                    <span>{{i.recens}}</span>
+                </div>
+            {% endfor %}
+        </div>
+        {% if user %}
+            <div class="insert">
+                <span>Inserisci un anime:</span>
+                <a class="insert_link" href="/insert"></a>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

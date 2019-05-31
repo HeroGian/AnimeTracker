@@ -1,0 +1,595 @@
+.body{
+    float: left;
+    width: 100%;
+}
+/* Header e intestazione della pagina web
+ */
+input, select {
+ outline:none;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+button{
+    background-color: white;
+    background-size: 15px;
+    border: 3px solid #1e8cbe;
+    border-radius: 5px;
+    padding: 6px;
+    margin-right: -2px;
+    margin-bottom: 10px;
+    color: #1e8cbe;
+    font-weight: bold;
+}
+button:hover, input:hover{
+    cursor: pointer;
+}
+h4 {
+    color: #1e8cbe;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+textarea{
+    border-color: lightgrey;
+}
+.header{
+    float: left;
+    margin-left: 10%;
+    width: 80%;
+    height: 63px;
+}
+.link_home {
+    float: left;
+    background-image: url("AnimeTracker.png");
+    background-repeat: no-repeat;
+    width: 487px;
+    height: 57px;
+}
+.ultime_recensioni, .nuovi_anime, .top_anime, .ricerca_anime{
+    float: left;
+    margin-top: 10px;
+    margin-left: 2%;
+    margin-bottom: 0.5%;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    width: 91.5%;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.btn_link{
+    background: none;
+    border:none;
+    font: inherit;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+.edit{
+    background: none;
+    border:none;
+    font: inherit;
+    cursor: pointer;
+    padding-left: 0;
+}
+.edit:hover{
+    text-decoration: underline;
+}
+.btn_link:hover{
+    background-color: #1e8cbe;
+}
+.anime_box{
+    float: left;
+    width: 108px;
+    margin-right: 10px;
+    padding: 2px;
+}
+.anime_box span{
+    color: #4F4F4F;
+}
+.ricerca_anime{
+    margin-top: 40px;
+}
+.nuovi_anime img:hover, .ricerca_anime img:hover{
+    opacity: 0.6;
+}
+.top_anime img:hover{
+    opacity: 0.6;
+}
+.ultime_recensioni{
+    padding-bottom: 15px;
+}
+.ultime_recensioni img{
+    border: 2px solid white;
+}
+.ultime_recensioni img:hover{
+    opacity: 0.6;
+}
+.recensione, .anime{
+    float: left;
+    display: block;
+    text-align: justify;
+    width: 92%;
+    margin-left: 4%;
+}
+/* Corpo principale di tutte le pagine
+ */
+.main{
+    float: left;
+    background-color: #e9ebee;
+    width: 80%;
+    min-height: 500px;
+    margin-left: 10%;
+    border: 1px solid lightgray;
+}
+/* Bottoni login e registrazione
+ */
+.display_avatar{
+    float: right;
+}
+.avatar_img{
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.avatar_img:hover{
+    opacity: 0.8;
+}
+.avatar_txt{
+    float: right;
+    margin-top: 25px;
+    margin-right: 8px;
+    color: black;
+}
+.avatar_txt:hover{
+    text-decoration: underline;
+}
+.login, .sign_up{
+    float: right;
+    margin-top: 20px;
+    margin-left: 3px;
+}
+.sign_up{
+    margin-right: 2px;
+    background-color: #1e8cbe;
+    color: white;
+}
+.sign_up:hover, .login:hover, .confirm_log_in:hover, .confirm_sign_up:hover, .logout:hover{
+    opacity: 0.8;
+}
+.confirm_sign_up, .confirm_log_in{
+    background-color: #1e8cbe;
+    background-size: 15px;
+    border: 3px solid #1e8cbe;
+    border-radius: 5px;
+    padding: 6px;
+    margin-right: -2px;
+    margin-bottom: 10px;
+    color: white;
+    font-weight: bold;
+}
+.confirm_log_in{
+    color: #1e8cbe;
+    background-color: white;
+}
+.logout{
+    float: right;
+    margin-top: 20px;
+    margin-left: 5px;
+}
+.insert{
+    float: left;
+    margin-top: 20px;
+    margin-left: 2%;
+    margin-bottom: 2%;
+    width: 40%;
+}
+.insert span{
+    float: left;
+    margin-top: 20px;
+}
+.insert_link{
+    float: left;
+    background-image: url("add_anime.png");
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+}
+.insert_link:hover{
+    opacity: 0.6;
+}
+.error_message, .response_message{
+    float: left;
+    color: red;
+    font-size: 12px;
+    margin-top: -8px;
+}
+.response_message{
+    color: green;
+}
+/* Barra di ricerca
+ */
+.search{
+    float: left;
+    display: block;
+    padding-top: 1.5%;
+    padding-bottom: 0.5%;
+    margin-left: 2%;
+    width: 80%;
+}
+.text_search{
+    width: 250px;
+    height: 16px;
+    padding: 3px;
+    border: 1px solid lightgray;
+    border-right: none;
+}
+.text_search:hover{
+    cursor: text;
+}
+.cosa_cerchi{
+    background-color: white;
+    padding: 2px;
+    padding-left: 4px;
+    margin-right: -5px;
+    height: 24px;
+    border: 1px solid lightgray;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.submit_search{
+    background-color: white;
+    background-image: url("search.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 15px;
+    border: 1px solid lightgray;
+    margin-left: -5px;
+    border-left: none;
+    height: 24px;
+    width: 30px;
+    color: transparent;
+}
+/* Riquadro che mostra i dettagli nella ricerca degli anime
+ */
+.anime_search{
+    float: left;
+    width: 80%;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    margin-top: 50px;
+    margin-left: 2%;
+    background-color: lightcyan;
+    border: 1px solid grey;
+}
+.anime_search span{
+    float: left;
+    margin-top: 40px;
+    margin-left: 10px;
+}
+.anime_search img{
+    float: left;
+    padding: 0.5%;
+    border: 2px solid white;
+}
+.anime_search img:hover{
+    opacity: 0.6;
+}
+
+/* Informazioni relative alla pagina di un anime
+ */
+.anime_titolo, .utente_titolo{
+    margin-left: 2%;
+}
+.anime_info, .info_utente{
+    float: left;
+    margin-left: 2%;
+    height: auto;
+    width: 23%;
+}
+.cover_anime{
+    width: 100%;
+    height: auto;
+}
+.anime_box_right, .profile_box_right{
+    float: left;
+    width: 75%;
+}
+
+.info_utente img{
+    border: 2px solid white;
+}
+.anime_descr{
+    float: left;
+    text-align: justify;
+    width: 92%;
+    margin-left: 2%;
+    padding: 1.5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: white;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.punteggio_anime{
+    float: left;
+    margin-left: 2%;
+}
+.recensioni, .like_list, .watch_list{
+    float: left;
+    text-align: justify;
+    width: 92%;
+    margin-left: 2%;
+    margin-top: 2%;
+    padding: 1.5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: white;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.like_list, .watch_list{
+    width: 92%;
+}
+.watch_list{
+    margin-bottom: 15px;
+}
+.rece_box_left{
+    float: left;
+    margin-top: 10px;
+}
+.rece_box_left img{
+    margin-left: 5px;
+}
+.rece_box_right{
+    float: right;
+}
+.rece_box_left a{
+    color: black;
+    font-weight: bold;
+}
+.rece_text{
+    float: left;
+    margin-top: 10px;
+}
+.form_rec{
+    float: left;
+    margin-left: 2%;
+}
+.form_rec select{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.like_response{
+    float: left;
+    width: 100%;
+    background-color: greenyellow;
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid grey;
+}
+.share_with_google:hover{
+    opacity: 0.6;
+}
+.gplus_share{
+    text-decoration: none;
+}
+.gplus_share:hover{
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+/* Relativo alla pagina utente
+ */
+.info_utente{
+    margin-top: 0.5%;
+    width: 23%;
+}
+.ins_button{
+    float: left;
+    background-color: #1e8cbe;
+    background-size: 15px;
+    border: 3px solid #1e8cbe;
+    border-radius: 5px;
+    padding: 6px;
+    margin-top: 7px;
+    margin-right: -2px;
+    margin-bottom: 10px;
+    color: white;
+    font-weight: bold;
+}
+.del_avatar{
+    background-color: #1e8cbe;
+    background-size: 15px;
+    border: 3px solid #1e8cbe;
+    border-radius: 5px;
+    padding: 6px;
+    margin-top: 7px;
+    margin-left: 6px;
+    color: white;
+    font-weight: bold;
+}
+.del_avatar:hover, .ins_button:hover{
+    opacity: 0.8;
+}
+.del_like, .del_watch{
+    background-color: white;
+    background-repeat: no-repeat;
+    border: none;
+    height: 18px;
+    margin-top: 20px;
+}
+.del_like:hover, .del_watch:hover, .add_calendar:hover{
+    opacity: 0.8;
+}
+.add_calendar{
+    background-image: url("add_calendar.jpg");
+    color: transparent;
+    border: none;
+    height: 28px;
+    width: 120px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+.upload{
+    width: 120px;
+    height: 28px;
+    color: black;
+    background-image: url("insert_image.png");
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+.upload input{
+    display: block !important;
+    width: 120px !important;
+    height: 28px !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+}
+.upload:hover{
+    opacity: 0.8;
+}
+
+/* Form pagina di login
+ */
+.login_form, .signup_form, .insert_form, .error {
+    float: left;
+    background-color: white;
+    border: 1px solid lightgrey;
+    width: 87.5%;
+    margin-top: 20px;
+    margin-left: 2%;
+    margin-bottom: 1%;
+    padding: 4%;
+    border-radius: 5px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.field, .field_edit{
+    width: 250px;
+    height: 16px;
+    margin-bottom: 10px;
+    padding: 3px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+.field_edit{
+    width: 100%;
+}
+.field:hover, .field_edit:hover{
+    cursor: text;
+}
+.plus_button, .mal_button{
+    float: left;
+    background-image: url("google_plus.png");
+    width: 120px;
+    height: 32px;
+}
+.plus_button:hover{
+    opacity: 0.8;
+}
+.mal_button{
+    background-image: url("mal.png");
+}
+.mal_button:hover{
+    opacity: 0.8;
+}
+
+/* Stile dei messaggi di errore
+ */
+.error{
+    float: left;
+    width: 75%;
+    margin-top: 5%;
+    margin-left: 10%;
+}
+.error h1{
+    font-size: 300%
+}
+
+
+/* CSS scroll anime
+ */
+/* TEST
+ */
+.container {
+  margin: 0 auto;
+}
+
+
+/* Example wrapper */
+
+.wrap {
+  position: relative;
+}
+
+
+/* Frame */
+
+.frame {
+  height: 220px;
+  line-height: 250px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.frame ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-size: 50px;
+}
+
+.frame ul li {
+  float: left;
+  width: 160px;
+  height: 220px;
+  margin: 0 1px 0 0;
+  padding: 0;
+  background: #333;
+  color: #ddd;
+  text-align: center;
+  cursor: pointer;
+}
+
+.frame ul li.active {
+  color: #fff;
+  background: #a03232;
+}
+
+.scrollbar {
+  margin: 0 0 1em 0;
+  height: 2px;
+  background: #ccc;
+  line-height: 0;
+}
+
+.scrollbar .handle {
+  width: 100px;
+  height: 100%;
+  background: #292a33;
+  cursor: pointer;
+}
+
+.scrollbar .handle .mousearea {
+  position: absolute;
+  top: -9px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+}

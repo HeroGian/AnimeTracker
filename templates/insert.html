@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert - AnimeTracker</title>
+    <link href="/static/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="header">
+        <a href="/" class="link_home"></a>
+        {% if not user %}
+            <a href="/login">
+                 <button class="login">Login</button>
+            </a>
+            <a href="/signup">
+                 <button class="sign_up">Sign Up</button>
+            </a>
+        {% else %}
+            <a href="/logout">
+                 <button class="logout">Logout</button>
+            </a>
+            <a href="/profile?id={{user}}" class="display_avatar">
+                <img class="avatar_img" src="{{avatar_header}}" width="42"/>
+                <span class="avatar_txt" ><b>{{user}}</b></span>
+            </a>
+        {% endif %}
+    </div>
+    <div class="main">
+
+        <div class="insert_form">
+            <form action="{{upload_url}}" method="post" enctype="multipart/form-data">
+                <b>Immagine di Copertina:</b><br>
+                <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
+                {% if cover %}
+                    <span class="error_message">* inserisci un'immagine di copertina</span><br>
+                {% endif %}
+
+                <b>Stato:</b><br>
+                <select name="status">
+                    <option value="Finished Airing">Finished Airing</option>
+                    <option value="Currently Airing">Currently Airing</option>
+                    <option value="Not yet aired">Not yet aired</option>
+                </select><br><br>
+
+                <b>Titolo:</b><br>
+                <input class="field" type="text" name="titolo" placeholder="Titolo"><br>
+                {% if titolo %}
+                    <span class="error_message">* inserisci un titolo valido</span><br>
+                {% endif %}
+
+                <b>Numero di Episodi:</b><br>
+                <input class="field" type="number" step="1" name="num_ep" placeholder="Numero di episodi"><br>
+
+                <b>Data Inizio:</b><br>
+                <input class="field" type="date" name="start_date"><br>
+
+                <b>Data Fine:</b><br>
+                <input class="field" type="date" name="end_date"><br>
+
+                <b>Descrizione:</b><br>
+                <textarea name="descr" rows="10" cols="40" placeholder="Inserisci una descrizione"></textarea>
+
+                <br>
+                <input class="confirm_sign_up" type="submit" value="Inserisci" name="submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

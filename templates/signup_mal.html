@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login MAL - AnimeTracker</title>
+    <link href="/static/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="header">
+        <a href="/" class="link_home"></a>
+    </div>
+    <div class="main">
+
+        <div class="login_form">
+            <span>Tramite il form seguente potrai registrarti o loggarti<br>
+                col tuo account * di MyAnimeList.</span>
+             <form method="post">
+                 <br>
+                 <b>Username:</b><br>
+                    <input class="field" type="text" name="username"
+                           value="{{username}}" placeholder="Username" ><br>
+                    <b>Password:</b><br>
+                    <input class="field" type="password" name="password"
+                           placeholder="Password" autocomplete="new-password" ><br>
+                 {% if login %}
+                    <span class="error_message">* {{login}}</span><br>
+                 {% endif %}
+
+                 <br><br>
+                 <input class="confirm_sign_up" type="submit" value="verifica" name="verifica">
+                 <p>* se non sei in possesso di un account clicca
+                     <a href="https://myanimelist.net/register.php?from=%2F">qui</a>
+                     per crearne uno</p>
+
+                {% if not verified %}
+                    </form>
+                {% else %}
+                    <hr>
+                    <br>
+                        <b>Username:</b><br>
+                        <input class="field" type="text" name="new_user" placeholder="Username" value="{{user}}"><br>
+                        {% if user_err %}
+                            <span class="error_message">* {{user_err}}</span><br>
+                        {% endif %}
+
+                        <b>Nome:</b><br>
+                        <input class="field" type="text" name="nome" placeholder="Nome" value="{{nome}}"><br>
+                            {% if nome_err %}
+                                <span class="error_message">* {{nome_err}}</span><br>
+                            {% endif %}
+
+                        <b>Cognome:</b><br>
+                        <input class="field" type="text" name="cognome" placeholder="Cognome" value="{{cognome}}"><br>
+                            {% if cognome_err %}
+                                <span class="error_message">* {{cognome_err}}</span><br>
+                            {% endif %}
+
+                        <b>Email:</b><br>
+                        <input class="field" type="text" name="email" placeholder="Email" value="{{email}}"><br>
+                            {% if email_err %}
+                                <span class="error_message">* {{email_err}}</span><br>
+                            {% endif %}
+
+                        <br>
+                        <input class="confirm_sign_up" type="submit" value="conferma" name="conferma">
+                </form>
+                <br>
+                <span>Questo username ti identifica univocamente all'interno del sistema</span><br>
+                <span>non ti sarà più richiesto.</span>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{user}} - AnimeTracker</title>
+    <link href="/static/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="header">
+        <a href="/" class="link_home"></a>
+        {% if not user %}
+            <a href="/login">
+                 <button class="login">Login</button>
+            </a>
+            <a href="/signup">
+                 <button class="sign_up">Sign Up</button>
+            </a>
+        {% else %}
+            <a href="/logout">
+                 <button class="logout">Logout</button>
+            </a>
+            <a href="/profile?id={{user}}" class="display_avatar">
+                <img class="avatar_img" src="{{avatar_header}}" width="42"/>
+                <span class="avatar_txt" ><b>{{user}}</b></span>
+            </a>
+        {% endif %}
+
+    </div>
+    <div class="main">
+        <div class="utente_titolo">
+            <h2>{{user_page.key.id()}}</h2>
+        </div>
+        <div class="info_utente">
+            <img class="cover_anime" src="{{avatar_page}}" />
+
+            {% if user_page.key.id() == user %}
+            {% if edit_profile %}
+                <div class="edit_info_profile">
+                    <form method="post" enctype="multipart/form-data" action="{{upload_url}}">
+                        <div class="upload">
+                            <input class="sce_button" type="file" name="fileToUpload" id="fileToUpload" value="Upload"><br>
+                        </div>
+                    <input class="ins_button" type="submit" name="submit" value="Inserisci">
+                    </form>
+                    <form method="post">
+                        <input class="del_avatar" type="submit" name="delete" value="Elimina">
+                        <input class="confirm_log_in" type="submit" name="close_edit_profile" value="Chiudi">
+                    </form>
+                </div>
+            {% endif %}
+            {% endif %}
+
+            <h4>Informazioni:</h4>
+            <ul>
+                <li><b>Username:</b> {{user_page.key.id()}}</li>
+                <li><b>Nome:</b> {{user_page.nome}}</li>
+                <li><b>Cognome:</b> {{user_page.cognome}}</li>
+                <li><b>Creazione:</b> {{user_page.created}}</li>
+            </ul>
+
+            {% if user_page.key.id() == user %}
+            {% if not edit_profile %}
+                <form method="post">
+                    <input class="edit" type="submit" value="edit" name="edit_profile">
+                </form>
+                {% endif %}
+            {% endif %}
+
+            <hr>
+            {% if user_page.key.id() == user %}
+                <form method="post">
+                    <input class="add_calendar" type="submit" name="add_calendar">
+                </form>
+
+                {% if aggiunti_calendario %}
+                    <span class="response_message">* {{aggiunti_calendario}}</span><br>
+                {% endif %}
+            {% endif %}
+        </div>
+        <div class="profile_box_right">
+        <div class="like_list">
+            <h4>Lista degli Anime preferiti:</h4>
+            <hr>
+            <ol>
+                    {% for a in lista_like %}
+                        <li>
+                            <a href="/anime?id={{a.titolo|replace(' ', '+')}}">
+                                <img src="{{a.cover}}" width="32" height="42" />
+                            </a>
+                            <a href="/anime?id={{a.titolo|replace(' ', '+')}}">
+                                <span>{{a.titolo}}</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ol>
+        </div>
+        <div class="watch_list">
+            <h4>Lista degli Anime seguiti:</h4>
+            <hr>
+            <ol>
+                    {% for a in lista_watch %}
+                        <li>
+                            <a href="/anime?id={{a.titolo|replace(' ', '+')}}">
+                                <img src="{{a.cover}}" width="32" height="42" />
+                            </a>
+                            <a href="/anime?id={{a.titolo|replace(' ', '+')}}">
+                                <span>{{a.titolo}}</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ol>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

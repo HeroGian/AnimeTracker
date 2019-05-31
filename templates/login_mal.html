@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login MAL - AnimeTracker</title>
+    <link href="/static/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="header">
+        <a href="/" class="link_home"></a>
+    </div>
+    <div class="main">
+        <div class="login_form">
+            <span>Tramite il form seguente potrai registrarti o loggarti<br> col tuo account * di MyAnimeList.</span>
+             <form method="post">
+                 <br>
+                 <b>Username:</b><br>
+                 <input class="field" type="text" name="username" value="{{username}}" placeholder="Username"><br>
+                 <b>Password:</b><br>
+                 <input class="field" type="password" name="password" placeholder="Password" autocomplete="new-password"><br>
+                 {% if login %}
+                    <span class="error_message">* {{login}}</span><br>
+                 {% endif %}
+                 <br><br>
+                 <input class="confirm_log_in" type="submit" value="login" name="login">
+                 <p>* se non sei in possesso di un account clicca
+                     <a href="https://myanimelist.net/register.php?from=%2F">qui</a>
+                     per crearne uno</p>
+             </form>
+        </div>
+    </div>
+</body>
+</html>
